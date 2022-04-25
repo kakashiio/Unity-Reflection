@@ -1,0 +1,21 @@
+{
+    "name": "kakashi.reflection",
+    "displayName": "KakashiFramework Reflection",
+    "version": "1.0.0",
+    "unity": "2020.3",
+    "description": "KakashiFramework Reflection Utils for Unity",
+    "dependencies": {
+    },
+    "author": {
+        "name": "Kakashi",
+        "email": "john.cha@qq.com",
+        "url": "https://github.com/kakashiio/Unity-Reflection"
+    },
+    "samples": [
+        {
+            "displayName": "Baisc usage about the reflection utils",
+            "description": "Baisc usage about the reflection utils",
+            "path": "Samples~/Basic"
+        }
+    ]
+}
