@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace KakashiFramework.Reflection.Samples.Basic
+namespace IO.Unity3D.Source.Reflection.Samples.Basic
 {
     //******************************************
     //  
@@ -9,27 +9,21 @@ namespace KakashiFramework.Reflection.Samples.Basic
     // @Email: john.cha@qq.com
     // @Date: 2022-04-25 22:51
     //******************************************
-    public class Dog : IAnimal
+    public class Cat : IAnimal
     {
-        [RefFieldOrProperty]
-        private string _Name;
-
-        [RefFieldOrProperty] 
-        private int _Age { get; set; }
-
         public void Run()
         {
-            Debug.LogError("Dog is running");
+            Debug.LogError("Cat is running");
         }
 
         public void Sleep()
         {
-            Debug.LogError("Dog is sleeping");
+            Debug.LogError("Cat is sleeping");
         }
 
         public void Eat()
         {
-            Debug.LogError("Dog is eating");
+            Debug.LogError("Cat is eating");
         }
     }
 }

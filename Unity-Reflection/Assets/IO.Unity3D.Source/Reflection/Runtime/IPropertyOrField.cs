@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace KLFramework.Reflection
+namespace IO.Unity3D.Source.Reflection
 {
     //******************************************
     //  

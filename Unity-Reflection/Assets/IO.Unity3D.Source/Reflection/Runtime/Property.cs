@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace KLFramework.Reflection
+namespace IO.Unity3D.Source.Reflection
 {
     //******************************************
     //  
@@ -11,50 +11,50 @@ namespace KLFramework.Reflection
     // @Email: john.cha@qq.com
     // @Date: 2022-04-24 23:17
     //******************************************
-    public class Field : IPropertyOrField
+    class Property : IPropertyOrField
     {
-        private FieldInfo _FieldInfo;
+        private PropertyInfo _PropertyInfo;
 
-        public Field(FieldInfo field)
+        public Property(PropertyInfo prop)
         {
-            _FieldInfo = field;
+            _PropertyInfo = prop;
         }
 
-        public string Name => _FieldInfo.Name;
+        public string Name => _PropertyInfo.Name;
 
         public void SetValue(object obj, object val)
         {
-            _FieldInfo.SetValue(obj, val);
+            _PropertyInfo.SetValue(obj, val);
         }
 
         public A GetCustomAttribute<A>(bool inherit = false) where A : Attribute
         {
-            return _FieldInfo.GetCustomAttribute<A>(inherit);
+            return _PropertyInfo.GetCustomAttribute<A>(inherit);
         }
         
         public IEnumerable<A> GetCustomAttributes<A>(bool inherit = false) where A : Attribute
         {
-            return _FieldInfo.GetCustomAttributes<A>(inherit);
+            return _PropertyInfo.GetCustomAttributes<A>(inherit);
         }
 
         public Attribute GetCustomAttribute(Type attributeType, bool inherit = false)
         {
-            return _FieldInfo.GetCustomAttribute(attributeType, inherit);
+            return _PropertyInfo.GetCustomAttribute(attributeType, inherit);
         }
 
         public object[] GetCustomAttributes(Type attributeType, bool inherit = false)
         {
-            return _FieldInfo.GetCustomAttributes(attributeType, inherit);
+            return _PropertyInfo.GetCustomAttributes(attributeType, inherit);
         }
 
         public Type GetFieldOrPropertyType()
         {
-            return _FieldInfo.FieldType;
+            return _PropertyInfo.PropertyType;
         }
 
         public object GetValue(object o)
         {
-            return _FieldInfo.GetValue(o);
+            return _PropertyInfo.GetValue(o);
         }
     }
 }

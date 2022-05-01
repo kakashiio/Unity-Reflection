@@ -1,9 +1,7 @@
-using System;
 using System.Reflection;
-using KLFramework.Reflection;
 using UnityEngine;
 
-namespace KakashiFramework.Reflection.Samples.Basic
+namespace IO.Unity3D.Source.Reflection.Samples.Basic
 {
     //******************************************
     //  
