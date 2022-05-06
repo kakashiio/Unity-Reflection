@@ -1,6 +1,6 @@
 {
     "name": "io.unity3d.source.reflection",
-    "displayName": "Source Framework",
+    "displayName": "Source Framework Reflection",
     "version": "1.0.0",
     "unity": "2020.3",
     "description": "Component in Source Framework - Reflection Utils for Unity",
