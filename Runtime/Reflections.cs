@@ -23,6 +23,18 @@ namespace IO.Unity3D.Source.Reflection
             DEFAULT = CLASS_OR_STRUCT
         }
 
+        /// <summary>
+        /// POFGetter stands for `Property or Field Getter`
+        /// It declares how to get property or field.
+        /// </summary>
+        public enum PoFGetter
+        {
+            PropertyThenField,
+            FieldThenProperty,
+            Property,
+            Field
+        }
+
         private const BindingFlags DEFAULT_BINDING_FLAGS = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance;
         private static readonly Type TYPE_ATTRIBUTE = typeof(Attribute);        
         private static readonly ITypeContainer DefaultTypeContainer = new TypeContainer();
@@ -283,6 +295,54 @@ namespace IO.Unity3D.Source.Reflection
             }
 
             return list;
+        }
+
+        /// <summary>
+        /// Get property or field in type by `name`.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="name">name of property of field</param>
+        /// <param name="pofGetter">Define how to get property or field</param>
+        /// <param name="bindingFlags"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public static IPropertyOrField GetPropertyOrField(Type type, string name, PoFGetter pofGetter = PoFGetter.PropertyThenField, BindingFlags bindingFlags = DEFAULT_BINDING_FLAGS)
+        {
+            switch (pofGetter)
+            {
+                case PoFGetter.PropertyThenField:
+                {
+                    var property = type.GetProperty(name, bindingFlags);
+                    if (property != null)
+                    {
+                        return new Property(property);
+                    }
+                    var field = type.GetField(name, bindingFlags);
+                    return field == null ? null : new Field(field);
+                }
+                case PoFGetter.FieldThenProperty:
+                {
+                    var field = type.GetField(name, bindingFlags);
+                    if (field != null)
+                    {
+                        return new Field(field);
+                    }
+                    var property = type.GetProperty(name, bindingFlags);
+                    return property == null ? null : new Property(property);
+                }
+                case PoFGetter.Property:
+                {
+                    var property = type.GetProperty(name, bindingFlags);
+                    return property == null ? null : new Property(property);
+                }
+                case PoFGetter.Field:
+                {
+                    var field = type.GetField(name, bindingFlags);
+                    return field == null ? null : new Field(field);
+                }
+                default:
+                    throw new NotImplementedException("Unsupport " + nameof(PoFGetter) + "=" + pofGetter);
+            }
         }
 
         /// <summary>
