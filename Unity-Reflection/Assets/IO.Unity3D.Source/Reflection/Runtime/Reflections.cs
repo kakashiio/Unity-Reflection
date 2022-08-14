@@ -168,7 +168,7 @@ namespace IO.Unity3D.Source.Reflection
 
             for (int i = 0; i < fields.Length; i++)
             {
-                if (attribute == null || fields[i].GetCustomAttribute(attribute) != null)
+                if (attribute == null || fields[i].GetCustomAttributes(attribute, true).Length > 0)
                 {
                     fieldInfos.Add(fields[i]);
                 }
@@ -204,7 +204,7 @@ namespace IO.Unity3D.Source.Reflection
 
             for (int i = 0; i < fields.Length; i++)
             {
-                if (attribute == null || fields[i].GetCustomAttribute(attribute) != null)
+                if (attribute == null || fields[i].GetCustomAttributes(attribute, true).Length > 0)
                 {
                     fieldInfos.Add(fields[i]);
                 }
